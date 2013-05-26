@@ -1,5 +1,3 @@
-module Logstash
-  module Rails
-    VERSION = "0.0.1"
-  end
+module LogstashRails
+  VERSION = "0.0.1"
 end
