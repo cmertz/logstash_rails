@@ -1,1 +1,1 @@
-# LogstashRails [![Code Metrics](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cmertz/logstash-rails) [![Build Status](https://secure.travis-ci.org/cmertz/logstash-rails.png)](http://travis-ci.org/cmertz/logstash-rails)
+# LogstashRails [![Code Climate](https://codeclimate.com/github/cmertz/logstash-rails.png)](https://codeclimate.com/github/cmertz/logstash-rails) [![Build Status](https://secure.travis-ci.org/cmertz/logstash-rails.png)](http://travis-ci.org/cmertz/logstash-rails)
