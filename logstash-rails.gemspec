@@ -1,11 +1,10 @@
-# -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'logstash-rails/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "logstash-rails"
-  gem.version       = Logstash::Rails::VERSION
+  gem.version       = LogstashRails::VERSION
   gem.authors       = ["cmertz"]
   gem.email         = ["chris@nimel.de"]
   gem.description   = %q{TODO: Write a gem description}
