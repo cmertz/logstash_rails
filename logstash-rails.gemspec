@@ -7,8 +7,8 @@ Gem::Specification.new do |gem|
   gem.version       = LogstashRails::VERSION
   gem.authors       = ["cmertz"]
   gem.email         = ["chris@nimel.de"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Send Logstash events from a Rails application to Redis}
+  gem.summary       = %q{Send Logstash events from a Rails application to Redis}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
