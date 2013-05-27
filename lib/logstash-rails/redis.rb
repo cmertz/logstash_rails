@@ -13,6 +13,8 @@ module LogstashRails
     end
 
     def push(msg)
+      return if LogstashRails.test?
+
       raise unless @redis.rpush(@key, msg)
     end
 
