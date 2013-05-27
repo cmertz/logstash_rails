@@ -6,7 +6,7 @@ module LogstashRails
     DEFAULT_CONFIG_FILE = 'config/logstash-rails.yml'
 
     def initialize
-      config = YAML.load_file(DEFAULT_CONFIG_FILE)
+      config = YAML.load_file(DEFAULT_CONFIG_FILE).fetch(Rails.env)
 
       @key   = config.delete('key')
       @redis = Redis.connect(config)
