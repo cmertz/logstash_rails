@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Send Logstash events from a Rails application to Redis}
   gem.summary       = %q{Send Logstash events from a Rails application to Redis}
   gem.homepage      = ""
-  gem.licence       = "GPL"
+  gem.license       = "GPL"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
