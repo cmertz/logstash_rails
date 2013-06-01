@@ -4,6 +4,20 @@ require 'logstash-rails/redis'
 module LogstashRails
   class << self
 
+    def handle_all?
+      @handle_all
+    end
+
+    def handle_all=(value)
+      unless value.is_a?(TrueClass) || value.is_a?(FalseClass)
+        raise ArgumentError
+      end
+
+      @handle_all = value
+
+      subscribe(/.*/) if handle_all?
+    end
+
     def subscribe(event_type)
       @subscriptions ||= {}
 
