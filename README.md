@@ -5,12 +5,6 @@ Send Logstash events from a Rails application to Redis.
 
 ## Usage
 
-* add logstash-rails to the applications Gemfile
-* provide a __config/logstash-rails.yml__ with the redis connection
-  configuration, i.e. __host__ and __port__ and a __key__ for the redis list to
-  push to
-
-
 ## TODO
 
 * figure out how to test
