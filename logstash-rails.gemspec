@@ -20,6 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency('logstash-event')
   gem.add_dependency('redis')
 
-  gem.add_development_dependency('test-unit')
-  gem.add_development_dependency('rails')
+  gem.add_development_dependency('pry')
+  gem.add_development_dependency('minitest')
 end
