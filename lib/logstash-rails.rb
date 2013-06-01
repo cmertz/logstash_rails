@@ -1,6 +1,5 @@
 require 'logstash-rails/formatter'
 require 'logstash-rails/redis'
-require 'logstash-rails/railtie' if defined?(Rails)
 
 module LogstashRails
 
