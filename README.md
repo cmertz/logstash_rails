@@ -9,7 +9,4 @@ Send Logstash events from a Rails application to Redis.
 
 * figure out how to test
 * ameliorate basic event
-* what happens when exceptions are thrown, e.g. when we do not find an
-  apropriate formatter for an event
-* introduce environments
-* decouple railties initializer from actual formatters
+* autoconfigure?
