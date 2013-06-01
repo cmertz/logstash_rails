@@ -8,7 +8,15 @@ end
 module LogstashRails
   module Formatter
 
-    def self.format(name, start, finish, id, payload)
+    def self.format(event_type, *args)
+      return unless can_handle?(name)
+
+      json_event(event_type, *args)
+    end
+
+    private
+
+    def self.json_event(event_type, start, finish, id, payload)
       event = LogStash::Event.new
 
       event.timestamp = start
@@ -17,10 +25,17 @@ module LogstashRails
       event.fields['pid'] = $$
       event.fields['id']  = id
 
-      formatter = const_get(name.gsub('.','_').camelize.to_sym)
-      formatter.format(event, payload)
+      formatter(event_type).format(event, payload)
 
       event.to_json
+    end
+
+    def self.formatter(event_type)
+      const_get(event_type.gsub('.','_').camelize.to_sym)
+    end
+
+    def self.can_handle?(event_type)
+      !!(formatter(event_type))
     end
 
   end
