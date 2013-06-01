@@ -1,22 +1,7 @@
-require 'yaml'
-
 module LogstashRails
-  Redis = Class.new do
-
-    DEFAULT_CONFIG_FILE = 'config/logstash-rails.yml'
-
-    def initialize
-      config = YAML.load_file(DEFAULT_CONFIG_FILE).fetch(Rails.env)
-
-      @key   = config.delete('key')
-      @redis = Redis.connect(config)
-    end
-
+  class Redis < Struct.new(:redis_connection, :key)
     def push(msg)
-      return if LogstashRails.test?
-
       raise unless @redis.rpush(@key, msg)
     end
-
-  end.new
+  end
 end
