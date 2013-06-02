@@ -1,3 +1,4 @@
+require 'bundler'
 Bundler.require :default, :development, :test
 
 require 'coveralls'
