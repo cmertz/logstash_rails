@@ -1,5 +1,6 @@
 require 'logstash-rails/formatter'
 require 'logstash-rails/redis'
+require 'active_support'
 
 module LogstashRails
   class << self
