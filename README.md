@@ -1,4 +1,4 @@
-# LogstashRails [![Code Climate](https://codeclimate.com/github/cmertz/logstash-rails.png)](https://codeclimate.com/github/cmertz/logstash-rails) [![Build Status](https://secure.travis-ci.org/cmertz/logstash-rails.png)](http://travis-ci.org/cmertz/logstash-rails) [![Dependency Status](https://gemnasium.com/cmertz/logstash-rails.png)](https://gemnasium.com/cmertz/logstash-rails) [![Coverage Status](https://coveralls.io/repos/cmertz/logstash-rails/badge.png)](https://coveralls.io/r/cmertz/logstash-rails)
+# LogstashRails [![Code Climate](https://codeclimate.com/github/cmertz/logstash_rails.png)](https://codeclimate.com/github/cmertz/logstash_rails) [![Build Status](https://secure.travis-ci.org/cmertz/logstash_rails.png)](http://travis-ci.org/cmertz/logstash_rails) [![Dependency Status](https://gemnasium.com/cmertz/logstash_rails.png)](https://gemnasium.com/cmertz/logstash_rails) [![Coverage Status](https://coveralls.io/repos/cmertz/logstash_rails/badge.png)](https://coveralls.io/r/cmertz/logstash_rails)
 
 Send Logstash events from a Rails application to Redis.
 

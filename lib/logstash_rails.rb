@@ -1,4 +1,4 @@
-require 'logstash-rails/formatter'
+require 'logstash_rails/formatter'
 require 'active_support'
 
 module LogstashRails
