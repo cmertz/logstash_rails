@@ -12,3 +12,9 @@ end
 YARD::Rake::YardocTask.new do |t|
   t.name = 'doc'
 end
+
+desc 'cleanup working copy'
+task :clean do
+  FileUtils.rm_rf('coverage')
+  FileUtils.rm_rf('doc')
+end
