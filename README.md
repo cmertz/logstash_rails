@@ -10,18 +10,22 @@ to push to and a flag that enables to catch all events (i.e. /.\*/)
 
 The most basic configuration looks like:
 
-    LogstashRails.config(Redis.connect)
+```ruby
+LogstashRails.config(Redis.connect)
+```
 
 This will connect to the redis server on localhost, use 'logstash' (default) as
 key for the redis list to push to and subscribe to all events.
 
 A more complete example looks like:
 
-    if Rails.env.production?
-      redis = Redis.new('1.2.3.4', '12345')
-      LogstashRails.config(redis, 'my_key', false)
-      LogstashRails.subscribe('process_action.action_controller')
-    end
+```ruby
+if Rails.env.production?
+  redis = Redis.new('1.2.3.4', '12345')
+  LogstashRails.config(redis, 'my_key', false)
+  LogstashRails.subscribe('process_action.action_controller')
+end
+```
 
 
 ## TODO
