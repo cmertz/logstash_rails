@@ -10,7 +10,7 @@ have to add an initialzier to your rails app.
 
 A mininal Initializer looks like
 
-  LogstashRails.config(Redis.connect)
+    LogstashRails.config(Redis.connect)
 
 This will connect to the redis server on 127.0.0.1:6379 and push all events
 that can be handled by LogstashRails to the redis list with key 'logstash'.
