@@ -11,10 +11,14 @@ module LogstashRails
     # @param handle_all [Boolean]
     #
     def config(redis, key = 'logstash', handle_all = true)
+      unless handle_all.is_a?(TrueClass) || handle_all.is_a?(FalseClass)
+        raise ArgumentError
+      end
+
       @redis = redis
       @key   = key
 
-      self.handle_all = handle_all
+      subscribe(/.*/) if handle_all
     end
 
     # subscribes LogstashRails to an ActiveSupport notification
@@ -42,16 +46,6 @@ module LogstashRails
     def push(event_type, *args)
       return unless Formatter.can_handle?(event_type)
       raise unless @redis.rpush(@key, Formatter.format(event_type, *args))
-    end
-
-    def handle_all=(value)
-      unless value.is_a?(TrueClass) || value.is_a?(FalseClass)
-        raise ArgumentError
-      end
-
-      @handle_all = value
-
-      subscribe(/.*/)
     end
 
   end
