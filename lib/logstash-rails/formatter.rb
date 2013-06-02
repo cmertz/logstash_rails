@@ -1,5 +1,6 @@
 require 'logstash-event'
 require 'socket'
+require 'active_support/core_ext/string/inflections'
 
 Dir["#{File.dirname(__FILE__)}/formatter/*.rb"].each do |file|
   require file
