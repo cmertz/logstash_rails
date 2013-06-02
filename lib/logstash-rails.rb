@@ -11,16 +11,6 @@ module LogstashRails
       self.handle_all = handle_all
     end
 
-    def handle_all=(value)
-      unless value.is_a?(TrueClass) || value.is_a?(FalseClass)
-        raise ArgumentError
-      end
-
-      @handle_all = value
-
-      subscribe(/.*/)
-    end
-
     def subscribe(event_type)
       @subscriptions ||= {}
 
@@ -35,6 +25,18 @@ module LogstashRails
 
     def push(*args)
       raise unless @redis.rpush(@key, Formatter.format(*args))
+    end
+
+    private
+
+    def handle_all=(value)
+      unless value.is_a?(TrueClass) || value.is_a?(FalseClass)
+        raise ArgumentError
+      end
+
+      @handle_all = value
+
+      subscribe(/.*/)
     end
 
   end
