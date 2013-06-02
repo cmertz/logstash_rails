@@ -1,9 +1,15 @@
 require 'logstash-rails/formatter'
-require 'logstash-rails/redis'
 require 'active_support'
 
 module LogstashRails
   class << self
+
+    def config(redis, key = 'logstash', handle_all = true)
+      @redis = redis
+      @key   = key
+
+      self.handle_all = handle_all
+    end
 
     def handle_all?
       @handle_all
@@ -32,7 +38,7 @@ module LogstashRails
     end
 
     def push(*args)
-      Redis.push(Formatter.format(*args))
+      raise unless @redis.rpush(@key, Formatter.format(*args))
     end
 
   end
