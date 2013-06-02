@@ -11,10 +11,6 @@ module LogstashRails
       self.handle_all = handle_all
     end
 
-    def handle_all?
-      @handle_all
-    end
-
     def handle_all=(value)
       unless value.is_a?(TrueClass) || value.is_a?(FalseClass)
         raise ArgumentError
@@ -22,7 +18,7 @@ module LogstashRails
 
       @handle_all = value
 
-      subscribe(/.*/) if handle_all?
+      subscribe(/.*/)
     end
 
     def subscribe(event_type)
