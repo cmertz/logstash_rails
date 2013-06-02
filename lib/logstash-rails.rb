@@ -4,6 +4,12 @@ require 'active_support'
 module LogstashRails
   class << self
 
+    # configures LogstashRails
+    #
+    # @param redis
+    # @param key [String]
+    # @param handle_all [Boolean]
+    #
     def config(redis, key = 'logstash', handle_all = true)
       @redis = redis
       @key   = key
@@ -11,6 +17,10 @@ module LogstashRails
       self.handle_all = handle_all
     end
 
+    # subscribes LogstashRails to an ActiveSupport notification
+    #
+    # @param event_type [String|Regexp]
+    #
     def subscribe(event_type)
       @subscriptions ||= {}
 
@@ -19,6 +29,10 @@ module LogstashRails
       end
     end
 
+    # unsubscribe LogstashRails form an ActiveSupport notification
+    #
+    # @param event_type [String|Regexp] this must be the equal to the event_type that was subscribed with
+    #
     def unsubscribe(event_type)
       ActiveSupport::Notifications.unsubscribe(@subscriptions[event_type])
     end
