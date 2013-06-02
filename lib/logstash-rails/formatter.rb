@@ -10,8 +10,6 @@ module LogstashRails
   module Formatter
 
     def self.format(event_type, *args)
-      return unless can_handle?(event_type)
-
       json_event(event_type, *args)
     end
 
