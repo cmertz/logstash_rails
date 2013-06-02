@@ -15,6 +15,10 @@ module LogstashRails
         raise ArgumentError
       end
 
+      raise ArgumentError unless key.is_a?(String)
+
+      raise ArgumentError unless redis
+
       @redis = redis
       @key   = key
 
