@@ -37,12 +37,12 @@ module LogstashRails
       ActiveSupport::Notifications.unsubscribe(@subscriptions[event_type])
     end
 
+    private
+
     def push(event_type, *args)
       return unless Formatter.can_handle?(event_type)
       raise unless @redis.rpush(@key, Formatter.format(event_type, *args))
     end
-
-    private
 
     def handle_all=(value)
       unless value.is_a?(TrueClass) || value.is_a?(FalseClass)
