@@ -20,7 +20,7 @@ module LogstashRails
 
       event.message   = event_type
       event.timestamp = start
-      event.source = Socket.gethostname
+      event.source    = Socket.gethostname
 
       event.fields['pid'] = $$
       event.fields['id']  = id
