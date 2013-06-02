@@ -5,8 +5,15 @@ Send Logstash events from a Rails application to Redis.
 
 ## Usage
 
-## TODO
+Given that you have a logging infrastructure with Logstash and Redis setup, you
+have to add an initialzier to your rails app.
 
-* figure out how to test
-* ameliorate basic event
-* autoconfigure?
+A mininal Initializer looks like
+
+  LogstashRails.config(Redis.connect)
+
+This will connect to the redis server on 127.0.0.1:6379 and push all events
+that can be handled by LogstashRails to the redis list with key 'logstash'.
+
+If you need to send to a different Redis server, just specify so in
+**Redis.connect**.
