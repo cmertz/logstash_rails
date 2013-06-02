@@ -18,6 +18,7 @@ module LogstashRails
     def self.json_event(event_type, start, finish, id, payload)
       event = LogStash::Event.new
 
+      event.message   = event_type
       event.timestamp = start
       event.source = Socket.gethostname
 
