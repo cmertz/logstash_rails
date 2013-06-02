@@ -20,8 +20,4 @@ Gem::Specification.new do |gem|
   gem.add_dependency('logstash-event')
   gem.add_dependency('active_support')
   gem.add_dependency('redis')
-
-  gem.add_development_dependency('pry')
-  gem.add_development_dependency('minitest')
-  gem.add_development_dependency('fakeredis')
 end

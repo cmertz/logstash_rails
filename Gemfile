@@ -2,4 +2,14 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'coveralls', require: false
+group :development do
+  gem 'coveralls', require: false
+  gem 'pry'
+  gem 'yard'
+  gem 'rake'
+end
+
+group :test do
+  gem 'minitest', require: 'minitest/autorun'
+  gem 'fakeredis'
+end
