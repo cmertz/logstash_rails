@@ -5,15 +5,26 @@ Send Logstash events from a Rails application to Redis.
 
 ## Usage
 
-Given that you have a logging infrastructure with Logstash and Redis setup, you
-have to add an initialzier to your rails app.
+**LogstashRails.config** takes a redis connection, the redis key for the list
+to push to and a flag that enables to catch all events (i.e. /.\*/)
 
-A mininal Initializer looks like
-
+The most basic configuration looks like
     LogstashRails.config(Redis.connect)
+This will connect to the redis server on localhost, use 'logstash' (default) as
+key for the redis list to push to and subscribe to all events.
 
-This will connect to the redis server on 127.0.0.1:6379 and push all events
-that can be handled by LogstashRails to the redis list with key 'logstash'.
+A more complete example would look like
 
-If you need to send to a different Redis server, just specify so in
-**Redis.connect**.
+if Rails.env.production?
+  redis = Redis.new('1.2.3.4', '12345')
+  LogstashRails.config(redis, 'my_key', false)
+  LogstashRails.subscribe('process_action.action_controller')
+end
+
+
+## TODO
+
+* extend README
+* add formatter for more events (e.g. actionmailer, actionview, ...)
+* write log entry in case we cannot push to redis
+* add doc task to Rakefile
