@@ -49,7 +49,17 @@ module LogstashRails
 
     def push(event_type, *args)
       return unless Formatter.can_handle?(event_type)
-      raise unless @redis.rpush(@key, Formatter.format(event_type, *args))
+
+      begin
+        @redis.rpush(@key, Formatter.format(event_type, *args))
+      rescue
+        log $!
+      end
+    end
+
+    def log(exception)
+      msg = exception.message + "\n " + exception.backtrace.join("\n ")
+      Rails.logger.error(msg)
     end
 
   end
