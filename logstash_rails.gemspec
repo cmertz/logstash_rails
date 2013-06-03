@@ -18,6 +18,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency('logstash-event')
-  gem.add_dependency('active_support')
+  gem.add_dependency('activesupport')
   gem.add_dependency('redis')
 end
