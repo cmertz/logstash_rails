@@ -30,7 +30,6 @@ end
 
 ## TODO
 
-* extend README
+* remove implicit mapping from event type names to formatter classes (i.e. make that an explicit lookup table)
+* reset config upon call to LogstashRails.config
 * add formatter for more events (e.g. actionmailer, actionview, ...)
-* write log entry in case we cannot push to redis
-* add doc task to Rakefile
