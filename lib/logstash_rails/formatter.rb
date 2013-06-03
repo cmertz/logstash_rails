@@ -35,7 +35,7 @@ module LogstashRails
     end
 
     def self.can_handle?(event_type)
-      const_defined?(event_type.gsub('.','_').camelize.to_sym)
+      const_defined?(event_type.gsub('.','_').camelize.to_sym) rescue false
     end
 
   end
