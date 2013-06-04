@@ -4,26 +4,27 @@ require 'socket'
 module LogstashRails
   module Formatter
 
-    def self.format(event_type, *args)
-      json_event(event_type, *args)
+    def self.format(event_type, start, finish, id, payload)
+      fields = {
+        process_id: $$,
+        host: Socket.gethostname
+      }
+
+      event = LogStash::Event.new(payload.merge!(fields))
+
+      event.timestamp = start
+      event.message   = event_type
+      event.source    = application_name
+
+      event.to_json
     end
 
     private
 
-    def self.argument_hash(event_type, start, finish, id, payload)
-      {
-        process_id: $$,
-        message: event_type,
-        source: Socket.gethostname
-      }.merge!(payload)
-    end
-
-    def self.json_event(event_type, start, finish, id, payload)
-      event = LogStash::Event.new(argument_hash(event_type, start, finish, id, payload))
-
-      event.timestamp = start
-
-      event.to_json
+    def self.application_name
+      if defined?(Rails)
+        Rails.application.class.parent_name
+      end
     end
 
   end
