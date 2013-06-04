@@ -17,7 +17,7 @@ describe 'generated logstash event' do
   end
 
   it 'has the event type as message' do
-    JSON.parse(redis.lpop('logstash'))['message'].must_equal "process_action.action_controller"
+    JSON.parse(redis.lpop('logstash'))['@message'].must_equal "process_action.action_controller"
   end
 
 end
