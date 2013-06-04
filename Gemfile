@@ -12,4 +12,5 @@ end
 group :test do
   gem 'minitest', require: 'minitest/autorun'
   gem 'fakeredis'
+  gem 'mocha', require: false
 end
