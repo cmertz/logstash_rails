@@ -18,14 +18,6 @@ describe LogstashRails do
     redis.lpop('logstash').wont_be_nil
   end
 
-  it 'does not handle unknown events' do
-    LogstashRails.config(redis)
-
-    ActiveSupport::Notifications.instrument("toto")
-
-    redis.lpop('logstash').must_be_nil
-  end
-
   it 'does not handle events unless told to' do
     LogstashRails.config(redis, 'logtstash', false)
 

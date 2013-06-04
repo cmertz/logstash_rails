@@ -48,8 +48,6 @@ module LogstashRails
     private
 
     def push(event_type, *args)
-      return unless Formatter.can_handle?(event_type)
-
       begin
         @redis.rpush(@key, Formatter.format(event_type, *args))
       rescue

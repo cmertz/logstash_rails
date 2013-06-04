@@ -1,10 +1,5 @@
 require 'logstash-event'
 require 'socket'
-require 'active_support/core_ext/string/inflections'
-
-Dir["#{File.dirname(__FILE__)}/formatter/*.rb"].each do |file|
-  require file
-end
 
 module LogstashRails
   module Formatter
@@ -15,27 +10,20 @@ module LogstashRails
 
     private
 
+    def self.argument_hash(event_type, start, finish, id, payload)
+      {
+        process_id: $$,
+        message: event_type,
+        source: Socket.gethostname
+      }.merge!(payload)
+    end
+
     def self.json_event(event_type, start, finish, id, payload)
-      event = LogStash::Event.new
+      event = LogStash::Event.new(argument_hash(event_type, start, finish, id, payload))
 
-      event.message   = event_type
       event.timestamp = start
-      event.source    = Socket.gethostname
-
-      event.fields['pid'] = $$
-      event.fields['id']  = id
-
-      formatter(event_type).format(event, payload)
 
       event.to_json
-    end
-
-    def self.formatter(event_type)
-      const_get(event_type.gsub('.','_').camelize.to_sym)
-    end
-
-    def self.can_handle?(event_type)
-      const_defined?(event_type.gsub('.','_').camelize.to_sym) rescue false
     end
 
   end
