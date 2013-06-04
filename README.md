@@ -2,8 +2,24 @@
 
 Send Logstash events from a Rails application to Redis.
 
+## Installation
 
-## Usage
+In your applications Gemfile:
+
+```ruby
+gem 'logstash_rails'
+```
+
+For the latest version:
+
+```ruby
+gem 'logstash_rails', github: 'cmertz/logstash_rails'
+```
+
+Provide an initializer (e.g. config/initializers/logstash_rails.rb) for
+specific configuration.
+
+### Configuration
 
 **LogstashRails.config** takes a redis connection, the redis key for the list
 to push to and a flag that enables to catch all events (i.e. /.\*/)
