@@ -4,9 +4,9 @@ require 'mocha/setup'
 describe 'error behaviour' do
 
   it 'logs exception traces to the Rails logger' do
-    Rails = Object.new
-    Rails.stubs(:logger).returns(MiniTest::Mock.new)
-    Rails.logger.expect(:error, nil, [String])
+    logger = MiniTest::Mock.new
+    logger.expect(:error, nil, [String])
+    LogstashRails.stubs(:log).returns(logger)
 
     LogstashRails.config(1)
 
