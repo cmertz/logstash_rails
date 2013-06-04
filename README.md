@@ -46,6 +46,4 @@ end
 
 ## TODO
 
-* remove implicit mapping from event type names to formatter classes (i.e. make that an explicit lookup table)
-* reset config upon call to LogstashRails.config
-* add formatter for more events (e.g. actionmailer, actionview, ...)
+* more independent from Rails i.e. check defined?(Rails) and provide fallbacks (for logger and application name)
