@@ -1,40 +1,35 @@
-require 'spec_helper'
-
 describe LogstashRails::Configuration do
-  i_suck_and_my_tests_are_order_dependent!
 
   subject do
     LogstashRails::Configuration
   end
 
   it 'raises if no transport is specified' do
-    lambda { subject.new({}) }.must_raise(KeyError)
+    expect { subject.new({}) }.to raise_error(KeyError)
   end
 
   it 'handles all events by default' do
-    mock = Minitest::Mock.new
+    redis_transport = mock(:redis)
+    LogstashRails::Transport::Redis.stub(:new).and_return(redis_transport)
+    config = subject.new(transport: :redis)
 
-    LogstashRails::Transport::Redis.stub(:new, mock) do
-      subject.new(transport: :redis)
-    end
+    redis_transport.should_receive(:push)
 
-    mock.expect(:push, nil, [String])
     ActiveSupport::Notifications.instrument('foobar_event')
 
-    mock.verify
+    config.destroy
   end
 
   it 'logs exceptions if a logger is given' do
-    logger = Minitest::Mock.new
-    logger.expect(:error, nil, [String])
+    logger = mock(:logger)
+    LogstashRails::Transport::Redis.stub(:new).and_return(nil)
+    config = subject.new(transport: :redis, logger: logger)
 
-    LogstashRails::Transport::Redis.stub(:new, nil) do
-      subject.new(transport: :redis, logger: logger)
-    end
+    logger.should_receive(:error)
 
     ActiveSupport::Notifications.instrument('foobar_event')
 
-    logger.verify
+    config.destroy
   end
 
 end
