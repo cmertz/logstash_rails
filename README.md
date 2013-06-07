@@ -43,8 +43,8 @@ The most basic configuration looks like:
 LogstashRails.config(transport: :redis, redis: Redis.new)
 ```
 
-This will will use the provided redis connection, 'logstash' as
-key for the redis list to push to and subscribe to all events.
+This will will use the provided redis connection, _logstash_ as
+key for the redis list to push to and subscribe to _all events_.
 
 A more complete example looks like:
 
