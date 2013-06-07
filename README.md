@@ -16,13 +16,25 @@ and provide an initializer for configuration.
 
 `LogstashRails.config` takes an options hash with the following options:
 
-* transport
+* __transport__
+  
   redis is the only available transport atm
-* logger
+
+* __logger__
+  
   logger to use in case of exceptions while pushing events to the transport
-* events
+
+* __events__
+
   list of event name patterns to subscribe to. `Regex` and `String` is
   supported.
+  
+* __transport options__
+
+  transport specific options e.g. _redis_ and *redis_key*
+
+
+### Examples
 
 The most basic configuration looks like:
 
@@ -41,7 +53,7 @@ if Rails.env.production?
     transport: redis,
     redis: Redis.new(host: '1.2.3.4', port: 12345)
     redis_key: 'my_key',
-    events [/action_controller/]
+    events: [/action_controller/]
   )
 end
 ```
