@@ -1,11 +1,8 @@
 module LogstashRails
-  class Configuration < Struct.new(:events, :transport, :logger)
+  class Configuration < Struct.new(:events, :logger)
 
     def initialize(options)
-      transport = options.fetch(:transport)
-
       self.events = options[:events] || [/.*/]
-      self.transport = LogstashRails::Transport.get(transport).new(options)
       self.logger = options[:logger]
 
       subscribe
@@ -27,7 +24,7 @@ module LogstashRails
           json_event = Formatter.format(*args)
 
           begin
-            transport.push(json_event)
+            push(json_event)
           rescue
             log($!)
           end
