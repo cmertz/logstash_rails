@@ -2,7 +2,7 @@
 
 Send events from Rails to Logstash without logger foo.
 
-## Installation
+## Usage
 
 Add logstash-rails to your applications `Gemfile`
 
@@ -11,6 +11,7 @@ gem 'logstash_rails'
 ```
 
 and provide an initializer for configuration.
+
 
 ### Configuration
 
@@ -59,3 +60,13 @@ end
 ```
 
 This will only subscribe to events from `ActionController`.
+
+
+## Contributing
+
+1. Fork it.
+2. Create a branch (`git checkout -b my_markup`)
+3. Commit your changes (`git commit -am "Added Snarkdown"`)
+4. Push to the branch (`git push origin my_markup`)
+5. Open a [Pull Request][1]
+6. Enjoy a refreshing Diet Coke and wait
