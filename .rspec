@@ -1,0 +1,5 @@
+--require spec_helper
+--order random
+--colour
+--format nested
+-b

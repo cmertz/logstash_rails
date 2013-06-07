@@ -10,7 +10,6 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', require: 'minitest/autorun'
+  gem 'rspec'
   gem 'fakeredis'
-  gem 'mocha', require: false
 end
