@@ -1,5 +1,5 @@
 module LogstashRails
-  class Configuration < Struct.new(:events, :logger)
+  class ConfigurationBase < Struct.new(:events, :logger)
 
     def initialize(options)
       self.events = options[:events] || [/.*/]

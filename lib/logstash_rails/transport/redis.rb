@@ -1,10 +1,18 @@
 module LogstashRails
   module Transport
-    class Redis < Struct.new(:redis, :redis_key)
+    class Redis < LogstashRails::ConfigurationBase
+
+      attr_accessor :redis, :redis_key
 
       def initialize(options)
-        self.redis     = options.fetch(:redis)
-        self.redis_key = options.fetch(:redis_key)
+        host = options[:host] || '127.0.0.1'
+        port = options[:port] || 6379
+        redis_key = options[:redis_key] || 'logstash'
+
+        self.redis = ::Redis.new(host: host, port: port)
+        self.redis_key = redis_key
+
+        super
       end
 
       def push(json_event)
