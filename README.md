@@ -48,10 +48,10 @@ and provide an initializer for configuration.
 The most basic configuration looks like:
 
 ```ruby
-LogstashRails.config(transport: :redis, redis: Redis.new)
+LogstashRails.config(transport: :redis)
 ```
 
-This will will use the provided redis connection, _logstash_ as
+This will will connect to a redis server on _localhost:6379_, use _logstash_ as
 key for the redis list to push to and subscribe to _all events_.
 
 A more complete example looks like:
@@ -60,7 +60,8 @@ A more complete example looks like:
 if Rails.env.production?
   LogstashRails.config(
     transport: redis,
-    redis: Redis.new(host: '1.2.3.4', port: 12345)
+    host: '1.2.3.4', 
+    port: 12345,
     redis_key: 'my_key',
     events: [/action_controller/]
   )
