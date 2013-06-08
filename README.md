@@ -40,7 +40,7 @@ and provide an initializer for configuration.
   
 * __transport options__
 
-  transport specific options e.g. _redis_ and *redis_key*
+  transport specific options e.g. _host_, _port_ and *redis_key*
 
 
 ### Examples
