@@ -2,6 +2,14 @@
 
 Send events from Rails to Logstash without logger foo.
 
+## Contents
+
+* [Usage](#usage)
+    * [Configuration](#configurtion)
+    * [Examples](#examples)
+* [Contributing](#contributing)
+
+
 ## Usage
 
 Add logstash-rails to your applications `Gemfile`
