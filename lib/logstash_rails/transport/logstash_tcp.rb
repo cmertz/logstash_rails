@@ -4,7 +4,11 @@ module LogstashRails
 
       def initialize(options)
         super
-        @socket = TCPSocket.new(options.fetch(:host), options.fetch(:port))
+
+        host = options[:host] || 'localhost'
+        port = options.fetch(:port)
+
+        @socket = TCPSocket.new(host, port)
       end
 
       def push(json_event)
