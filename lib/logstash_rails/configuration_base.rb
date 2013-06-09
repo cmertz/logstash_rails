@@ -1,9 +1,13 @@
 module LogstashRails
-  class ConfigurationBase < Struct.new(:events, :logger)
+  class ConfigurationBase
 
     def initialize(options)
-      self.events = options[:events] || [/.*/]
-      self.logger = options[:logger]
+      @events = options[:events] || [/.*/]
+      @logger = options[:logger]
+
+      if defined?(Rails)
+        @logger ||= Rails.logger
+      end
 
       subscribe
     end
@@ -19,7 +23,7 @@ module LogstashRails
     private
 
     def subscribe
-      @subscriptions = events.map do |event|
+      @subscriptions = @events.map do |event|
         ActiveSupport::Notifications.subscribe(event) do |*args|
           json_event = Formatter.format(*args)
 
@@ -34,7 +38,7 @@ module LogstashRails
 
     def log(exception)
       msg = exception.message + "\n " + exception.backtrace.join("\n ")
-      logger.error(msg) if logger
+      @logger.error(msg) if @logger
     end
 
   end
