@@ -15,6 +15,11 @@ module LogstashRails
         @socket.write(json_event)
       end
 
+      def destroy
+        super
+        @socket.close
+      end
+
     end
   end
 end
