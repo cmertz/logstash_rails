@@ -7,14 +7,13 @@ Gem::Specification.new do |gem|
   gem.version       = LogstashRails::VERSION
   gem.authors       = ["cmertz"]
   gem.email         = ["chris@nimel.de"]
-  gem.description   = %q{Send Logstash events from a Rails application to Redis}
-  gem.summary       = %q{Send Logstash events from a Rails application to Redis}
-  gem.homepage      = ""
+  gem.summary       = %q{Send events from Rails to Logstash without logger foo.}
+  gem.description   = %q{Send events from Rails to Logstash without logger foo.}
+  gem.homepage      = "https://github.com/cmertz/logstash_rails"
   gem.license       = "GPL"
 
   gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.test_files    = gem.files.grep(%r{^spec/})
   gem.require_paths = ["lib"]
 
   gem.add_dependency('logstash-event')
