@@ -12,3 +12,7 @@ desc 'cleanup working copy'
 task :clean do
   FileUtils.rm_rf %w(coverage doc pkg)
 end
+
+task :default do
+  system "rake -T"
+end
