@@ -24,15 +24,17 @@ module LogstashRails
 
     def subscribe
       @subscriptions = @events.map do |event|
-        ActiveSupport::Notifications.subscribe(event) do |*args|
-          json_event = Formatter.format(*args)
+        ActiveSupport::Notifications.subscribe(event, method(:event_handler))
+      end
+    end
 
-          begin
-            push(json_event)
-          rescue
-            log($!)
-          end
-        end
+    def event_handler(*args)
+      json_event = Formatter.format(*args)
+
+      begin
+        push(json_event)
+      rescue
+        log($!)
       end
     end
 
