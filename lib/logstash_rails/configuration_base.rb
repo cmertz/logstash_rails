@@ -51,8 +51,8 @@ module LogstashRails
     end
 
     def log(exception)
-      msg = exception.message + "\n " + exception.backtrace.join("\n ")
-      @logger.error(msg) if @logger
+      return unless @logger
+      @logger.error(exception.message + "\n " + exception.backtrace.join("\n "))
     end
 
   end
