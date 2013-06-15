@@ -8,7 +8,6 @@ module LogstashRails
         logfile  = options[:logfile] || 'log/logstash_rails.log'
 
         @logger = ::Logger.new(logfile)
-
         @logger.formatter = lambda do |severity, datetime, progname, msg|
           "#{msg}\n"
         end
