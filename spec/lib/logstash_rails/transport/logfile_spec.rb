@@ -4,10 +4,6 @@ describe LogstashRails::Transport::Logfile do
     Tempfile.new(__FILE__)
   end
 
-  after do
-    logfile.unlink
-  end
-
   subject do
     LogstashRails::Transport::Logfile.new(logfile: logfile)
   end
