@@ -92,6 +92,4 @@ This will only subscribe to events from `ActionController`.
 
 ## License
 
-Licensed under the General Public License version 3 (GPLv3)
-
-See LICENSE for details.
+Licensed under the General Public License version 3 (GPLv3). See [LICENSE.txt](/LICENSE.txt) for details.
