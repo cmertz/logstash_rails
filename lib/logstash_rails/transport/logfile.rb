@@ -13,6 +13,8 @@ module LogstashRails
           "#{msg}\n"
         end
         @logger.level = Logger::INFO
+
+        super
       end
 
       def push(json_event)
