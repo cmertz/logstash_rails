@@ -1,6 +1,6 @@
 module LogstashRails
 
-  # base class for all transports
+  # base class for transports
   #
   class ConfigurationBase
 
