@@ -50,7 +50,27 @@ and provide an initializer for configuration.
 
 * __transport options__
 
-  transport specific options e.g. _host_, _port_ and *redis_key*
+  transport specific options that should be self explaining:
+
+  redis:
+  
+  * __host__
+  * __port__
+  * __redis_key__
+  
+  logfile:
+
+  * __logfile__
+  
+  logstash-tcp:
+
+  * __host__
+  * __port__
+  
+  logstash-udp:
+
+  * __host__
+  * __port__
 
 
 ### Examples
