@@ -7,6 +7,11 @@
 
 Send events from Rails to Logstash without logger foo.
 
+LogstashRails uses `ActiveSupport::Notifications` to subscribe to events from *Rails* and push them to *Logstash*.
+It emmits json formatted `Logstash::Event`.
+
+There is no `Logger` configuration, logfile or filter in Logstash required.
+
 ## Contents
 
 * [Usage](#usage)
