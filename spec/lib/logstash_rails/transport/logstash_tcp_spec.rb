@@ -22,6 +22,11 @@ describe LogstashRails::Transport::LogstashTcp do
     logstash_tcp.should respond_to :push
   end
 
+  it 'should close the tcp socket' do
+    socket = logstash_tcp.instance_variable_get(:@socket)
+    expect{ logstash_tcp.destroy }.to change{ socket.closed? }.from(false).to(true)
+  end
+
   it 'sends data over tcp' do
     logstash_tcp.push 'toto'
     logstash_tcp.destroy
