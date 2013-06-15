@@ -4,11 +4,7 @@ module LogstashRails
   #
   class TransportBase
 
-    # @param options [Hash]
-    #
-    # @option options [Array]  :events The list of events to subscribe
-    # @option options [Logger] :logger The logger for exceptions
-    #
+    # @see LogstashRails.config
     def initialize(options)
       @events = options[:events] || [/.*/]
       @logger = options[:logger]
