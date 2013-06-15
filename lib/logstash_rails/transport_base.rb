@@ -6,10 +6,10 @@ module LogstashRails
     # @see LogstashRails.config
     def initialize(options)
       @events = options[:events] || [/.*/]
-      @logger = options[:logger]
+      @error_logger = options[:logger]
 
       if defined?(Rails)
-        @logger ||= Rails.logger
+        @error_logger ||= Rails.logger
       end
 
       subscribe
@@ -46,8 +46,8 @@ module LogstashRails
     end
 
     def log(exception)
-      return unless @logger
-      @logger.error(exception.message + "\n " + exception.backtrace.join("\n "))
+      return unless @error_logger
+      @error_logger.error(exception.message + "\n " + exception.backtrace.join("\n "))
     end
 
   end
