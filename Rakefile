@@ -1,5 +1,5 @@
 require 'bundler/gem_tasks'
-require 'yard/rake/yardoc_task'
+require 'yard'
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:test)
