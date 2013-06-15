@@ -10,13 +10,17 @@ end
 module LogstashRails
 
   #
+  # configure LogstashRails
+  #
   # @param options [Hash] configuration options
   #
   # @option options [Symbol] :transport The transport to use.
   # @option options [Array<String, Regexp>] :events The list of events to subscribe
   # @option options [Logger] :logger The logger for exceptions
   #
-  # @returns the configured transport
+  # @return the configured transport
+  #
+  # @raise [KeyError] if no transport has been specified
   #
   # @see Transport available transports
   # @see TransportBase#destroy

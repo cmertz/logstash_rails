@@ -2,6 +2,14 @@ module LogstashRails
   module Transport
     class Redis < TransportBase
 
+      # @param options [Hash] configuration options
+      #
+      # @option options [Symbol] :host ('127.0.0.1') the host with the redis
+      #   server
+      # @option options [Symbol] :port (6379) the port to connect to
+      # @option options [Symbol] :redis_key ('logstash') the key of the redis
+      #   list to which events will be pushed to
+      #
       def initialize(options)
         host = options[:host] || '127.0.0.1'
         port = options[:port] || 6379
