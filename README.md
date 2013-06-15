@@ -32,7 +32,7 @@ and provide an initializer for configuration.
 
 * __transport__
   
-  redis is the only available transport atm
+  redis, logstash-udp and logstash-tcp are available atm
 
 * __logger__
   
@@ -64,7 +64,7 @@ A more complete example looks like:
 ```ruby
 if Rails.env.production?
   LogstashRails.config(
-    transport: redis,
+    transport: :redis,
     host: '1.2.3.4', 
     port: 12345,
     redis_key: 'my_key',
