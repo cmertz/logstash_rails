@@ -1,6 +1,6 @@
 module LogstashRails
   module Transport
-    class Redis < LogstashRails::ConfigurationBase
+    class Redis < TransportBase
 
       def initialize(options)
         host = options[:host] || '127.0.0.1'

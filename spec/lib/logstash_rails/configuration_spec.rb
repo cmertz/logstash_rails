@@ -1,4 +1,4 @@
-describe LogstashRails::ConfigurationBase do
+describe LogstashRails::TransportBase do
 
   subject do
     LogstashRails

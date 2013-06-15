@@ -2,7 +2,7 @@ module LogstashRails
 
   # base class for transports
   #
-  class ConfigurationBase
+  class TransportBase
 
     # @param options [Hash]
     #

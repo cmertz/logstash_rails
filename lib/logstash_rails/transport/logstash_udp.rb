@@ -1,6 +1,6 @@
 module LogstashRails
   module Transport
-    class LogstashUdp < ConfigurationBase
+    class LogstashUdp < TransportBase
 
       def initialize(options = {})
         super

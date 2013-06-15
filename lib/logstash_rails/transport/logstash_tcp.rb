@@ -1,6 +1,6 @@
 module LogstashRails
   module Transport
-    class LogstashTcp < ConfigurationBase
+    class LogstashTcp < TransportBase
 
       def initialize(options)
         super
