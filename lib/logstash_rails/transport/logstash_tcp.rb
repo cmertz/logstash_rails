@@ -3,12 +3,12 @@ module LogstashRails
     class LogstashTcp < TransportBase
 
       def initialize(options)
-        super
-
         host = options[:host] || 'localhost'
         port = options.fetch(:port)
 
         @socket = TCPSocket.new(host, port)
+
+        super
       end
 
       def push(json_event)
