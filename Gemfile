@@ -7,6 +7,7 @@ group :development do
   gem 'pry'
   gem 'yard'
   gem 'rake'
+  gem 'redcarpet'
 end
 
 group :test do
