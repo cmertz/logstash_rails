@@ -10,6 +10,5 @@ end
 
 desc 'cleanup working copy'
 task :clean do
-  FileUtils.rm_rf('coverage')
-  FileUtils.rm_rf('doc')
+  FileUtils.rm_rf %w(coverage doc pkg)
 end
