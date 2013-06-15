@@ -17,7 +17,7 @@ module LogstashRails
       end
 
       def push(json_event)
-        @logger.error(json_event)
+        @logger.info(json_event)
       end
 
     end
