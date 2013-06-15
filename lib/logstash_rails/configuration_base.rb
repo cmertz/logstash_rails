@@ -1,6 +1,14 @@
 module LogstashRails
+
+  # base class for all transports
+  #
   class ConfigurationBase
 
+    # @param options [Hash]
+    #
+    # @option options [Array]  :events The list of events to subscribe
+    # @option options [Logger] :logger The logger for exceptions
+    #
     def initialize(options)
       @events = options[:events] || [/.*/]
       @logger = options[:logger]
@@ -12,6 +20,10 @@ module LogstashRails
       subscribe
     end
 
+    # destroy
+    #
+    # unsubscribe from ActiveSupport::Notifications
+    #
     def destroy
       return unless @subscriptions
 
