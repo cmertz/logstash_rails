@@ -81,7 +81,7 @@ The most basic configuration looks like:
 LogstashRails.config(transport: :redis)
 ```
 
-This will will connect to a redis server on _localhost:6379_, use _logstash_ as
+This will connect to a redis server on _localhost:6379_, use _logstash_ as
 key for the redis list to push to and subscribe to _all events_.
 
 A more complete example looks like:
@@ -108,8 +108,8 @@ This will only subscribe to events from `ActionController`.
 3. Commit your changes (`git commit -am "Added ..."`)
 4. Push to the branch (`git push origin my_feature`)
 5. Open a Pull Request
-6. Enjoy a refreshing Diet Coke and wait
+6. Enjoy a refreshing Orangina and wait
 
 ## License
 
-Licensed under the General Public License version 3 (GPLv3). See [LICENSE.txt](/LICENSE.txt) for details.
+Licensed under the GNU General Public License version 3 (GPLv3). See [LICENSE.txt](/LICENSE.txt) for details.
