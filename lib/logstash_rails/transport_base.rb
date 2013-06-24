@@ -7,6 +7,7 @@ module LogstashRails
     def initialize(options)
       @events = options[:events] || [/.*/]
       @error_logger = options[:logger]
+      @raise_errors = options[:raise_errors] || false
 
       if defined?(Rails)
         @error_logger ||= Rails.logger
@@ -41,6 +42,7 @@ module LogstashRails
       begin
         push(json_event)
       rescue
+        raise $! if @raise_errors
         log($!)
       end
     end
