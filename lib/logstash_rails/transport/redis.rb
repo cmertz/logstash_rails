@@ -22,8 +22,13 @@ module LogstashRails
       end
 
       def push(json_event)
-        unless @redis.rpush(@redis_key, json_event)
-          raise "could not send event to redis"
+        begin
+          unless @redis.rpush(@redis_key, json_event)
+            raise "could not send event to redis"
+          end
+        rescue ::Redis::InheritedError
+          @redis.client.connect
+          retry
         end
       end
 

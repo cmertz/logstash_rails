@@ -7,7 +7,8 @@ describe LogstashRails::Transport::Redis do
   subject do
     LogstashRails::Transport::Redis.new(
       redis:      Redis.new,
-      redis_key: 'logstash'
+      redis_key: 'logstash',
+      raise_errors: true
     )
   end
 
@@ -17,6 +18,33 @@ describe LogstashRails::Transport::Redis do
     subject.push('foobar_event')
 
     Redis.new.lpop('logstash').should eq 'foobar_event'
+  end
+
+  it 'survives forking' do
+    r,w = IO.pipe
+
+    # use connection in parent process
+    subject.push 'foo'
+    Redis.new.lpop 'logstash'
+
+    if fork
+      w.close
+
+      r.read.should eq 'true'
+
+      Process.wait
+    else
+
+      # use connection in child process
+      subject.push 'bar'
+
+      w.write(Redis.new.lpop('logstash') == 'bar')
+      w.flush
+
+      SimpleCov.at_exit{}
+      Process.exit! true
+    end
+
   end
 
 end
