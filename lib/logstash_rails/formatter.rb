@@ -10,7 +10,12 @@ module LogstashRails
         host: Socket.gethostname
       }
 
-      event = LogStash::Event.new(payload.merge!(fields))
+      # process_action.action_controller events
+      # from Rails4 contain Rack::Request instances
+      # that are not serializable
+      payload.delete(:request)
+
+      event = LogStash::Event.new(payload)
 
       event.timestamp = start
       event.message   = event_type
