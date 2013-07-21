@@ -27,24 +27,23 @@ describe LogstashRails::Transport::Redis do
     subject.push 'foo'
     Redis.new.lpop 'logstash'
 
-    if fork
-      w.close
-
-      r.read.should eq 'true'
-
-      Process.wait
-    else
-
+    fork do
       # use connection in child process
       subject.push 'bar'
 
       w.write(Redis.new.lpop('logstash') == 'bar')
       w.flush
 
+      # override exit hooks
       SimpleCov.at_exit{}
       Process.exit! true
     end
 
+    w.close
+
+    r.read.should eq 'true'
+
+    Process.wait
   end
 
 end
