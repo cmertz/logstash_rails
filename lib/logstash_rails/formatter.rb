@@ -5,10 +5,10 @@ module LogstashRails
   class Formatter
 
     def format(event_type, start, finish, id, payload)
-      fields = {
+      payload.merge!(
         process_id: $$,
         host: Socket.gethostname
-      }
+      )
 
       # process_action.action_controller events
       # from Rails4 contain Rack::Request instances
