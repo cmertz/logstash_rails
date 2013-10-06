@@ -23,6 +23,9 @@ describe LogstashRails::Transport::LogstashTcp do
   end
 
   it 'should close the tcp socket' do
+    # initialize tcp socket
+    logstash_tcp.push 'toto'
+
     socket = logstash_tcp.instance_variable_get(:@socket)
     expect{ logstash_tcp.destroy }.to change{ socket.closed? }.from(false).to(true)
   end
@@ -33,4 +36,11 @@ describe LogstashRails::Transport::LogstashTcp do
     @thread.join
     @received.should eq 'toto'
   end
+
+  it 'lazily connects the socket' do
+    expect{ logstash_tcp.push 'toto' }.to change{
+      logstash_tcp.instance_variable_get(:@socket).class
+    }
+  end
+
 end
