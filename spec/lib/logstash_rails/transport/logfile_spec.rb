@@ -1,7 +1,7 @@
 describe LogstashRails::Transport::Logfile do
 
   let :logfile do
-    Tempfile.new(__FILE__)
+    Tempfile.new(File.basename(__FILE__))
   end
 
   subject do
