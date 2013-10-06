@@ -11,6 +11,7 @@ describe LogstashRails::Transport::LogstashTcp do
   end
 
   after do
+    @thread.kill
     @server.close
   end
 
