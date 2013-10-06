@@ -11,7 +11,7 @@ describe 'generated logstash event' do
   end
 
   it 'has the event type as message' do
-    JSON.parse(Redis.new.lpop('logstash'))['@message'].should eq "process_action.action_controller"
+    JSON.parse(Redis.new.lpop('logstash'))['message'].should eq "process_action.action_controller"
   end
 
 end
