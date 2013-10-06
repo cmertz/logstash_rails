@@ -8,6 +8,7 @@ module LogstashRails
       @events = options[:events] || [/.*/]
       @error_logger = options[:logger]
       @raise_errors = options[:raise_errors] || false
+      @formatter = Formatter.new
 
       if defined?(Rails)
         @error_logger ||= Rails.logger
@@ -37,7 +38,7 @@ module LogstashRails
     end
 
     def event_handler(*args)
-      json_event = Formatter.format(*args)
+      json_event = @formatter.format(*args)
 
       begin
         push(json_event)

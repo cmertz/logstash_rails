@@ -2,9 +2,9 @@ require 'logstash-event'
 require 'socket'
 
 module LogstashRails
-  module Formatter
+  class Formatter
 
-    def self.format(event_type, start, finish, id, payload)
+    def format(event_type, start, finish, id, payload)
       fields = {
         process_id: $$,
         host: Socket.gethostname
@@ -26,7 +26,7 @@ module LogstashRails
 
     private
 
-    def self.application_name
+    def application_name
       if defined?(Rails)
         Rails.application.class.parent_name
       end
