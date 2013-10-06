@@ -19,7 +19,7 @@ describe LogstashRails::TransportBase do
   end
 
   it 'logs exceptions if a logger is given' do
-    logger = mock(:logger)
+    logger = double(:logger)
     config = subject.config(transport: :redis, logger: logger)
     config.stub(:push).and_raise(ArgumentError.new)
 
