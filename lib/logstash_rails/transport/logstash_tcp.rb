@@ -1,5 +1,4 @@
 require 'celluloid/io'
-require 'celluloid/io'
 
 module LogstashRails
   module Transport
