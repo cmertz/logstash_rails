@@ -47,6 +47,11 @@ and provide an initializer for configuration.
 
   list of event name patterns to subscribe to. `Regex` and `String` is
   supported.
+  
+* __flatten_params__
+
+  true, false
+  Flatten params hash. This gets rid of collisions in dynamic mappings in ElasticSearch.
 
 * __transport options__
 
