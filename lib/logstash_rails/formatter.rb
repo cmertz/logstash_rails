@@ -35,15 +35,17 @@ module LogstashRails
     private
 
     def flatten_params(payload)
-      params = payload[:params]
+      return unless @flatten_params
 
-      if @flatten_params && params
-        payload[:params] = flatten_hash(params)
-      end
+      params = payload[:params]
+      return unless params
+
+      payload[:params] = flatten_hash(params)
     end
 
     def prefix(current, last)
       return "#{last}.#{current}" if last
+
       current.to_s
     end
 
