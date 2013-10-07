@@ -2,6 +2,8 @@ require 'logstash-event'
 require 'socket'
 
 module LogstashRails
+
+  # TODO needs refactoring
   class Formatter
 
     def initialize(options = {})
