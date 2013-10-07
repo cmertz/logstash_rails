@@ -42,9 +42,15 @@ module LogstashRails
       end
     end
 
+    def prefix(current, last)
+      return "#{last}.#{current}" if last
+      current.to_s
+    end
+
     def flatten_hash(h, last = nil, accu = {})
       h.each do |k, v|
-        prefix = "#{last}_#{k}"
+        prefix = prefix(k, last)
+
         if v.is_a?(Hash)
           flatten_params(v, prefix, accu)
         else
