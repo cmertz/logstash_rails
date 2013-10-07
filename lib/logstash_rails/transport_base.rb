@@ -8,7 +8,7 @@ module LogstashRails
       @events = options[:events] || [/.*/]
       @error_logger = options[:logger]
       @raise_errors = options[:raise_errors] || false
-      @formatter = Formatter.new
+      @formatter = Formatter.new(options)
 
       if defined?(Rails)
         @error_logger ||= Rails.logger
