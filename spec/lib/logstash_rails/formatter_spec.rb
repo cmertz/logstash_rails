@@ -7,16 +7,15 @@ describe LogstashRails::Formatter do
   end
 
   it 'flattens params' do
-    formatter = LogstashRails::Formatter.new(flatten_params: true)
     payload = {params:{a: {b: 1}, c: 2}}
 
-    result = formatter.format('event', Time.now, Time.now, 1, payload)
+    result = subject.call(payload)
 
     JSON.parse(result).should include({'params' => {'a.b' => 1, 'c' => 2}})
   end
 
   it 'does not flatten params' do
-    formatter = LogstashRails::Formatter.new
+    formatter = LogstashRails::Formatter.new(flatten_params: false)
     payload = {params:{a: {b: 1}, c: 2}}
 
     result = formatter.format('event', Time.now, Time.now, 1, payload)

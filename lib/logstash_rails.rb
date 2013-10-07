@@ -17,6 +17,7 @@ module LogstashRails
   # @option options [Symbol] :transport The transport to use.
   # @option options [Array<String, Regexp>] :events The list of events to subscribe
   # @option options [Logger] :logger The logger for exceptions
+  # @option options [Boolean] :flatten_params Flatten params hash of process_action.action_controller events (Hash with only one level). Defaults to true
   #
   # @return the configured transport
   #

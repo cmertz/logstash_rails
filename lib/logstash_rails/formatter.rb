@@ -7,7 +7,7 @@ module LogstashRails
   class Formatter
 
     def initialize(options = {})
-      @flatten_params = options[:flatten_params]
+      @flatten_params = (options[:flatten_params] != false)
     end
 
     def format(event_type, start, finish, id, payload)
