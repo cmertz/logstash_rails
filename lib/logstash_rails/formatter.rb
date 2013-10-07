@@ -52,7 +52,7 @@ module LogstashRails
         prefix = prefix(k, last)
 
         if v.is_a?(Hash)
-          flatten_params(v, prefix, accu)
+          flatten_hash(v, prefix, accu)
         else
           accu[prefix] = v
         end
