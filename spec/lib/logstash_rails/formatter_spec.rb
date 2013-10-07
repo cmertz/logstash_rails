@@ -11,7 +11,7 @@ describe LogstashRails::Formatter do
 
     result = subject.call(payload)
 
-    JSON.parse(result).should include({'params' => {'a.b' => 1, 'c' => 2}})
+    JSON.parse(result).should include({'params' => {'a__b' => 1, 'c' => 2}})
   end
 
   it 'does not flatten params' do

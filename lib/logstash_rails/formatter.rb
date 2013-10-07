@@ -44,7 +44,7 @@ module LogstashRails
     end
 
     def prefix(current, last)
-      return "#{last}.#{current}" if last
+      return "#{last}__#{current}" if last
 
       current.to_s
     end
