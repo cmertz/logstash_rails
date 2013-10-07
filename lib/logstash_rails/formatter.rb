@@ -19,7 +19,7 @@ module LogstashRails
       # that are not serializable
       payload.delete(:request)
 
-      payload = flatten_params(payload) if @flatten_params
+      flatten_params(payload)
 
       event = LogStash::Event.new(payload)
 
@@ -32,7 +32,15 @@ module LogstashRails
 
     private
 
-    def flatten_params(h, last = nil, accu = {})
+    def flatten_params(payload)
+      params = payload[:params]
+
+      if @flatten_params && params
+        payload[:params] = flatten_hash(params)
+      end
+    end
+
+    def flatten_hash(h, last = nil, accu = {})
       h.each do |k, v|
         prefix = "#{last}_#{k}"
         if v.is_a?(Hash)
