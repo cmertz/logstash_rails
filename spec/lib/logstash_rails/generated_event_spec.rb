@@ -14,4 +14,6 @@ describe 'generated logstash event' do
     JSON.parse(Redis.new.lpop('logstash'))['message'].should eq "process_action.action_controller"
   end
 
+  it 'contains additional fields'
+
 end
