@@ -14,6 +14,10 @@ describe 'generated logstash event' do
     subject['message'].should eq "process_action.action_controller"
   end
 
-  it 'contains additional fields'
+  it 'contains additional fields' do
+    %w(message host process_id source).each do |field|
+      subject.should include(field)
+    end
+  end
 
 end
