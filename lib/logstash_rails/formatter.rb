@@ -13,7 +13,9 @@ module LogstashRails
     def format(event_type, start, finish, id, payload)
       payload.merge!(
         process_id: $$,
-        host: Socket.gethostname
+        host:       Socket.gethostname,
+        message:    event_type,
+        source:     application_name
       )
 
       # process_action.action_controller events
@@ -26,8 +28,6 @@ module LogstashRails
       event = LogStash::Event.new(payload)
 
       event.timestamp = start
-      event.message   = event_type
-      event.source    = application_name
 
       event.to_json
     end
