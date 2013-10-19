@@ -1,7 +1,8 @@
 describe LogstashRails::Transport::LogstashUdp do
 
   subject do
-    LogstashRails::Transport::LogstashUdp.new(port: 9001)
+    formatter = LogstashRails::Formatter.get
+    LogstashRails::Transport::LogstashUdp.new(formatter, port: 9001)
   end
 
   it { should respond_to :push }

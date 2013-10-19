@@ -5,7 +5,8 @@ describe LogstashRails::Transport::Logfile do
   end
 
   subject do
-    LogstashRails::Transport::Logfile.new(logfile: logfile)
+    formatter = LogstashRails::Formatter.get
+    LogstashRails::Transport::Logfile.new(formatter, logfile: logfile)
   end
 
   it { should respond_to :push }

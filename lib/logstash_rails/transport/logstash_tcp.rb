@@ -4,7 +4,7 @@ module LogstashRails
   module Transport
     class LogstashTcp < TransportBase
 
-      def initialize(options)
+      def initialize(formatter, options)
         @host = options[:host] || 'localhost'
         @port = options.fetch(:port)
 

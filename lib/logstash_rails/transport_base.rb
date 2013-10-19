@@ -4,11 +4,11 @@ module LogstashRails
   class TransportBase
 
     # @see LogstashRails.config
-    def initialize(options)
+    def initialize(formatter, options)
       @events = options[:events] || [/.*/]
       @error_logger = options[:logger]
       @raise_errors = options[:raise_errors] || false
-      @formatter = Formatter.get(options)
+      @formatter = formatter
 
       if defined?(Rails)
         @error_logger ||= Rails.logger

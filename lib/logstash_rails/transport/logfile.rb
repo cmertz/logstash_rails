@@ -4,7 +4,7 @@ module LogstashRails
   module Transport
     class Logfile < TransportBase
 
-      def initialize(options = {})
+      def initialize(formatter, options = {})
         logfile  = options[:logfile] || 'log/logstash_rails.log'
 
         @logger = ::Logger.new(logfile)

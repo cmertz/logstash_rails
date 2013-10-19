@@ -5,7 +5,9 @@ describe LogstashRails::Transport::Redis do
   end
 
   subject do
+    formatter = LogstashRails::Formatter.get
     LogstashRails::Transport::Redis.new(
+      formatter,
       redis:      Redis.new,
       redis_key: 'logstash',
       raise_errors: true

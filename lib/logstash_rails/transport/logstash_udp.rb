@@ -2,7 +2,7 @@ module LogstashRails
   module Transport
     class LogstashUdp < TransportBase
 
-      def initialize(options = {})
+      def initialize(formatter, options = {})
         host = options[:host] || 'localhost'
         port = options[:port] || 9999
 

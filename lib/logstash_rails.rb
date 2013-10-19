@@ -30,7 +30,9 @@ module LogstashRails
     transport = options.fetch(:transport)
     transport = transport.to_s.camelize.to_sym
 
-    LogstashRails::Transport.const_get(transport).new(options)
+    formatter = LogstashRails::Formatter.get(options)
+
+    LogstashRails::Transport.const_get(transport).new(formatter, options)
   end
 
 end

@@ -16,7 +16,8 @@ describe LogstashRails::Transport::LogstashTcp do
   end
 
   let :logstash_tcp do
-    LogstashRails::Transport::LogstashTcp.new(port: 9000)
+    formatter = LogstashRails::Formatter.get
+    LogstashRails::Transport::LogstashTcp.new(formatter, port: 9000)
   end
 
   it do
