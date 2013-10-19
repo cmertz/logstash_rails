@@ -1,7 +1,6 @@
 require 'active_support'
 require 'active_support/core_ext/string'
 
-require 'logstash_rails/transport_base'
 
 Dir[File.join(File.dirname(__FILE__), 'logstash_rails', '*.rb')].each do |file|
   require file

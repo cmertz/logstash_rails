@@ -1,3 +1,5 @@
+require 'logstash_rails/transport_base'
+
 Dir[File.join(File.dirname(__FILE__), 'transport', '*.rb')].each do |file|
   require file
 end
