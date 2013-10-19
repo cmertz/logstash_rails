@@ -5,10 +5,6 @@ module LogstashRails
 
   class FormatterBase
 
-    def initialize(options = {})
-      @flatten_params = (options[:flatten_params] != false)
-    end
-
     def perform(event_type, start, finish, id, payload)
       event_hash = format(event_type, start, finish, id, payload)
 

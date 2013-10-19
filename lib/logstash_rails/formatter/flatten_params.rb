@@ -9,8 +9,6 @@ module LogstashRails
       private
 
       def flatten_params(payload)
-        return payload unless @flatten_params
-
         params = payload[:params]
         return payload unless params
 
