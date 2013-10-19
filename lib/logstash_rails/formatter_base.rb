@@ -3,8 +3,7 @@ require 'socket'
 
 module LogstashRails
 
-  # TODO needs refactoring
-  class Formatter
+  class FormatterBase
 
     def initialize(options = {})
       @flatten_params = (options[:flatten_params] != false)
