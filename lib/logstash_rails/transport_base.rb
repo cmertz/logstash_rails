@@ -38,7 +38,7 @@ module LogstashRails
     end
 
     def event_handler(*args)
-      json_event = @formatter.format(*args)
+      json_event = @formatter.perform(*args)
 
       begin
         push(json_event)

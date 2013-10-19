@@ -2,15 +2,21 @@ module LogstashRails
   module Formatter
     module FlattenParams
 
+      def format(event_type, start, finish, id, payload)
+        flatten_params(super)
+      end
+
       private
 
       def flatten_params(payload)
-        return unless @flatten_params
+        return payload unless @flatten_params
 
         params = payload[:params]
-        return unless params
+        return payload unless params
 
         payload[:params] = flatten_hash(params)
+
+        payload
       end
 
       def prefix(current, last)

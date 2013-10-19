@@ -2,7 +2,7 @@ describe LogstashRails::Formatter do
 
   subject do
     lambda do |payload|
-      LogstashRails::Formatter.get.format('event', Time.now, Time.now, 1, payload)
+      LogstashRails::Formatter.get.perform('event', Time.now, Time.now, 1, payload)
     end
   end
 
@@ -18,7 +18,7 @@ describe LogstashRails::Formatter do
     formatter = LogstashRails::Formatter.get(flatten_params: false)
     payload = {params:{a: {b: 1}, c: 2}}
 
-    result = formatter.format('event', Time.now, Time.now, 1, payload)
+    result = formatter.perform('event', Time.now, Time.now, 1, payload)
 
     JSON.parse(result).should include({'params' => {'a' => {'b' => 1}, 'c' => 2}})
   end
