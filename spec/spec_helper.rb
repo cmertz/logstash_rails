@@ -11,6 +11,6 @@ SimpleCov.start do
 end
 
 require 'bundler'
-Bundler.require :default, :development, :test
+Bundler.require
 
 require 'logstash_rails'
