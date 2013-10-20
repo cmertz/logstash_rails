@@ -14,13 +14,13 @@ module LogstashRails
 
       private
 
-      def flatten_params(payload)
-        params = payload[:params]
-        return payload unless params
+      def flatten_params(event_hash)
+        params = event_hash[:params]
+        return event_hash unless params
 
-        payload[:params] = flatten_hash(params)
+        event_hash[:params] = flatten_hash(params)
 
-        payload
+        event_hash
       end
 
       def prefix(current, last)
