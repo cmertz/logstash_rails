@@ -6,6 +6,12 @@ module LogstashRails
         flatten_params(super)
       end
 
+      def self.decorate(target, options)
+        if options[:flatten_params] != false
+          target.extend(self)
+        end
+      end
+
       private
 
       def flatten_params(payload)

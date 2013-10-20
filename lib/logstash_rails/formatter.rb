@@ -10,16 +10,10 @@ module LogstashRails
     def self.get(options = {})
       formatter = FormatterBase.new
 
-      if options[:flatten_params] != false
-        formatter.extend(FlattenParams)
-      end
-
-      source = options[:source]
-      if source != false
-        formatter.extend(Source)
-        if source != true
-          formatter.source = source
-        end
+      Formatter.constants.map do |constant|
+        Formatter.const_get(constant)
+      end.each do |decorator|
+        decorator.decorate(formatter, options)
       end
 
       formatter
