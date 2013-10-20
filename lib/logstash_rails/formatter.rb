@@ -8,11 +8,18 @@ module LogstashRails
   module Formatter
 
     def self.get(options = {})
-
       formatter = FormatterBase.new
 
       if options[:flatten_params] != false
         formatter.extend(FlattenParams)
+      end
+
+      source = options[:source]
+      if source != false
+        formatter.extend(Source)
+        if source != true
+          formatter.source = source
+        end
       end
 
       formatter

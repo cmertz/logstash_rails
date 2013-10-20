@@ -19,8 +19,7 @@ module LogstashRails
       payload = payload.merge(
         process_id: $$,
         host:       Socket.gethostname,
-        message:    event_type,
-        source:     application_name
+        message:    event_type
       )
 
       # process_action.action_controller events
@@ -29,14 +28,6 @@ module LogstashRails
       payload.delete(:request)
 
       payload
-    end
-
-    private
-
-    def application_name
-      if defined?(Rails)
-        Rails.application.class.parent_name
-      end
     end
 
   end
