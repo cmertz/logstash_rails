@@ -21,12 +21,10 @@ module LogstashRails
       def self.get_source(source_option)
         if source_option != true
           source_option
+        elsif defined?(Rails)
+          Rails.application.class.parent_name
         else
-          if defined?(Rails)
-            Rails.application.class.parent_name
-          else
-            ''
-          end
+          ''
         end
       end
 
