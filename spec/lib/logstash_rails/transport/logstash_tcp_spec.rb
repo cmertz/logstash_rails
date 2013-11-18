@@ -25,12 +25,14 @@ describe LogstashRails::Transport::LogstashTcp do
   end
 
   it 'uses Celluliod::IO if present' do
-    celluloid = double(:celluloid, new: double(:socket, write: nil))
+    celluloid = double(:celluloid, new: double(:socket, close: nil, write: nil))
     stub_const('Celluloid::IO::TCPSocket', celluloid)
 
     celluloid.should_receive(:new)
 
     logstash_tcp.push 'toto'
+
+    logstash_tcp.destroy
   end
 
   it 'should close the tcp socket' do
