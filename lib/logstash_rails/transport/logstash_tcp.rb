@@ -1,5 +1,3 @@
-require 'celluloid/io'
-
 module LogstashRails
   module Transport
     class LogstashTcp < TransportBase
@@ -27,9 +25,12 @@ module LogstashRails
       private
 
       def connect!
-        @socket = Celluloid::IO::TCPSocket.new(@host, @port)
+        @socket = if defined? Celluloid::IO::TCPSocket
+                    Celluloid::IO::TCPSocket.new(@host, @port)
+                  else
+                    TCPSocket.new(@host, @port)
+                  end
       end
-
     end
   end
 end

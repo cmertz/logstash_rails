@@ -19,5 +19,4 @@ Gem::Specification.new do |gem|
   gem.add_dependency('logstash-event', '~> 1.2.02')
   gem.add_dependency('activesupport')
   gem.add_dependency('redis')
-  gem.add_dependency('celluloid-io')
 end
