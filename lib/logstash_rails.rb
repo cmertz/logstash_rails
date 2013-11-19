@@ -26,12 +26,8 @@ module LogstashRails
   # @see TransportBase#destroy
   #
   def self.config(options)
-    transport = options.fetch(:transport)
-    transport = transport.to_s.camelize.to_sym
-
     formatter = LogstashRails::Formatter.get(options)
-
-    LogstashRails::Transport.const_get(transport).new(formatter, options)
+    LogstashRails::Transport.get(options.fetch(:transport)).new(formatter, options)
   end
 
 end
