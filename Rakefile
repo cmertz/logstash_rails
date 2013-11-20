@@ -1,7 +1,6 @@
 require 'bundler/gem_tasks'
 require 'yard'
 require 'rspec/core/rake_task'
-require 'tailor/rake_task'
 
 RSpec::Core::RakeTask.new(:test)
 
@@ -17,5 +16,3 @@ end
 task :default do
   system "rake -T"
 end
-
-Tailor::RakeTask.new
