@@ -39,7 +39,7 @@ You will have to add redis as a dependency to your application in order to use t
 
 * __transport__
 
-  redis, logstash-udp and logstash-tcp are available atm
+  redis, logstash-udp, logstash-tcp and logfile are available
 
 * __logger__
 
@@ -53,11 +53,11 @@ You will have to add redis as a dependency to your application in order to use t
 * __flatten_params__
 
   true, false
-  Flatten params hash. This gets rid of collisions in dynamic mappings in ElasticSearch.
+  Flatten params hash. This gets rid of collisions in dynamic mappings in ElasticSearch
 
-* __transport options__
+* __transport specific options__
 
-  transport specific options that should be self explaining:
+  should be self explaining:
 
   redis:
   
