@@ -61,14 +61,14 @@ __transport__
 __events__
 
   list of event name patterns to subscribe to. `Regex` and `String` is
-  supported. 
+  supported. Defaults to `[/.*/]`
   
   See [Active Support Instrumentation](http://edgeguides.rubyonrails.org/active_support_instrumentation.html)
   for the events that `Rails` emmits.
   
 __flatten_params__
 
-  `true` or `false`, defaults to false
+  `true` or `false`, defaults to true
   
   flatten the params hash of `process_action.action_controller` events. This gets rid of collisions in dynamic mappings in ElasticSearch
 
