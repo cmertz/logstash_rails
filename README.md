@@ -37,45 +37,44 @@ You will have to add redis as a dependency to your application in order to use t
 
 `LogstashRails.config` takes an options hash with the following options:
 
-* __transport__
+__transport__
 
   redis, logstash-udp, logstash-tcp and logfile are available
 
-* __logger__
-
-  logger to use in case of exceptions while pushing events to the transport
-
-* __events__
+__events__
 
   list of event name patterns to subscribe to. `Regex` and `String` is
   supported.
   
-* __flatten_params__
+__flatten_params__
 
-  true, false
-  Flatten params hash. This gets rid of collisions in dynamic mappings in ElasticSearch
-
-* __transport specific options__
-
-  should be self explaining:
-
-  redis:
+  `true` or `false`, defaults to false
   
+  flatten the params hash of `process_action.action_controller` events. This gets rid of collisions in dynamic mappings in ElasticSearch
+
+__logger__
+
+  logger to use in case of exceptions while pushing events to the transport
+  
+__transport specific options__
+
+  should be self explaining
+
+redis: 
   * __host__
   * __port__
   * __redis_key__
-  
-  logfile:
 
+logfile:
   * __logfile__
   
-  logstash-tcp:
 
+logstash-tcp:
   * __host__
   * __port__
   
-  logstash-udp:
 
+logstash-udp:
   * __host__
   * __port__
 
