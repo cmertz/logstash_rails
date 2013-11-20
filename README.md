@@ -30,6 +30,8 @@ gem 'logstash_rails'
 
 and provide an initializer for configuration.
 
+You will have to add redis as a dependency to your application in order to use the redis transport.
+
 
 ### Configuration
 
