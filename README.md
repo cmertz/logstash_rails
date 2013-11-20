@@ -35,7 +35,11 @@ You will have to add redis as a dependency to your application in order to use t
 
 ### API
 
-`LogstashRails.configure(options_hash)` returns an configured instance of `LogstashRails::Transport`
+`LogstashRails.configure(options_hash)` returns an configured instance of `LogstashRails::Transport`.
+See [Configuration](#configuration) for the options.
+
+`LogstashRails::Transport.destroy` releases all resources (e.g. closes sockets) and unsubscribes 
+from all events for this instance.
 
 
 ### Configuration
