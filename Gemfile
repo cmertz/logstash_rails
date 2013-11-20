@@ -6,6 +6,6 @@ gem 'coveralls', require: false
 gem 'fakeredis'
 gem 'pry'
 gem 'rake'
-gem 'redcarpet'
+gem 'redcarpet', platforms: :ruby
 gem 'rspec'
 gem 'yard'
