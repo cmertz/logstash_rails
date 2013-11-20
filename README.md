@@ -13,7 +13,8 @@ It emmits json formatted `Logstash::Event`.
 There is no `Logger` configuration, logfile or filter in Logstash required.
 
 ## Contents
-
+* [Features](#features)
+* [Platforms](#platforms)
 * [Usage](#usage)
     * [API](#api)
     * [Configuration](#configuration)
@@ -26,6 +27,11 @@ There is no `Logger` configuration, logfile or filter in Logstash required.
 * some json event format normalization to prevent troubles with `Elasticsearch`
 * can be reconfigured at runtime
 * tcp and udp transports for testing
+
+## Platforms
+
+Tested under CRuby 1.9.3 and 2.0 . See [travis builds](http://travis-ci.org/cmertz/logstash_rails) for more details.
+
 
 ## Usage
 
