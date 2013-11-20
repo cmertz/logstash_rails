@@ -20,6 +20,12 @@ There is no `Logger` configuration, logfile or filter in Logstash required.
     * [Examples](#examples)
 * [Contributing](#contributing)
 
+## Features
+
+* fine grained control over which events will be subscribed to
+* some json event format normalization to prevent troubles with `Elasticsearch`
+* can be reconfigured at runtime
+* tcp and udp transports for testing
 
 ## Usage
 
@@ -48,12 +54,17 @@ from all events for this instance.
 
 __transport__
 
-  redis, logstash-udp, logstash-tcp and logfile are available
+  redis, logstash-udp, logstash-tcp and logfile are available. 
+  
+  logstash-tcp and logstash-udp should only be used for testing since they produce significant runtime overhead.
 
 __events__
 
   list of event name patterns to subscribe to. `Regex` and `String` is
-  supported.
+  supported. 
+  
+  See [Active Support Instrumentation](http://edgeguides.rubyonrails.org/active_support_instrumentation.html)
+  for the events that `Rails` emmits.
   
 __flatten_params__
 
@@ -93,11 +104,10 @@ logstash-udp:
 The most basic configuration looks like:
 
 ```ruby
-LogstashRails.config(transport: :redis)
+LogstashRails.config(transport: :logfile)
 ```
 
-This will connect to a redis server on _localhost:6379_, use _logstash_ as
-key for the redis list to push to and subscribe to _all events_.
+This will write _all_ events to `APP_ROOT/log/logstash_rails.log`
 
 A more complete example looks like:
 
