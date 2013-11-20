@@ -2,8 +2,13 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0
+  - ruby-head
   - jruby-19mode
   - rbx-2.1.1
-  - ruby-head
   - jruby-head
 script: rake test
+matrix:
+  allow_failures:
+    - jruby-19mode
+    - rbx-2.1.1
+    - jruby-head
