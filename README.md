@@ -15,7 +15,8 @@ There is no `Logger` configuration, logfile or filter in Logstash required.
 ## Contents
 
 * [Usage](#usage)
-    * [Configuration](#configurtion)
+    * [API](#api)
+    * [Configuration](#configuration)
     * [Examples](#examples)
 * [Contributing](#contributing)
 
@@ -32,10 +33,14 @@ and provide an initializer for configuration.
 
 You will have to add redis as a dependency to your application in order to use the redis transport.
 
+### API
+
+`LogstashRails.configure(options_hash)` returns an configured instance of `LogstashRails::Transport`
+
 
 ### Configuration
 
-`LogstashRails.config` takes an options hash with the following options:
+`LogstashRails.config`takes an options hash with the following options:
 
 __transport__
 
