@@ -3,14 +3,12 @@ rvm:
   - 1.9.3
   - 2.0
   - ruby-head
-  - jruby-19mode
   - rbx-2.1.1
+  - jruby-19mode
   - jruby-head
 script: rake test
 matrix:
   allow_failures:
     - rvm: rbx-2.1.1
     - rvm: jruby-19mode
-      script: bundle exec rspec spec --tag~forking
     - rvm: jruby-head
-      script: bundle exec rspec spec --tag~forking
