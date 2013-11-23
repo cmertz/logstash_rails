@@ -22,7 +22,7 @@ describe LogstashRails::Transport::Redis do
     Redis.new.lpop('logstash').should eq 'foobar_event'
   end
 
-  it 'survives forking' do
+  it 'survives forking', forking: true do
     r,w = IO.pipe
 
     # use connection in parent process
