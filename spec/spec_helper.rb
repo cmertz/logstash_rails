@@ -14,3 +14,9 @@ require 'bundler'
 Bundler.require
 
 require 'logstash_rails'
+
+if RUBY_ENGINE == 'jruby'
+  RSpec.configure do |c|
+    c.filter_run_excluding forking: true
+  end
+end
