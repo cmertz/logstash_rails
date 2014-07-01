@@ -17,7 +17,7 @@ describe LogstashRails::Transport::Logfile do
     subject.push(event)
 
     logfile.rewind
-    logfile.read.should include(event)
+    expect(logfile.read).to include(event)
   end
 
 end

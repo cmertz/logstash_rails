@@ -19,7 +19,7 @@ describe LogstashRails::Transport::Redis do
   it 'writes events to a redis list' do
     subject.push('foobar_event')
 
-    Redis.new.lpop('logstash').should eq 'foobar_event'
+    expect(Redis.new.lpop('logstash')).to eq 'foobar_event'
   end
 
   it 'survives forking', forking: true do
@@ -43,7 +43,7 @@ describe LogstashRails::Transport::Redis do
 
     w.close
 
-    r.read.should eq 'true'
+    expect(r.read).to eq 'true'
 
     Process.wait
   end

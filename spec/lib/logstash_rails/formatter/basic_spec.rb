@@ -5,17 +5,17 @@ describe LogstashRails::Formatter::Basic do
   end
 
   it 'deletes Rack::Request' do
-    subject.should_not include('request')
+    expect(subject).not_to include('request')
   end
 
   %w(message host process_id source).each do |field|
     it "adds #{field}" do
-      subject.should include(field)
+      expect(subject).to include(field)
     end
   end
 
   it 'has the event type as message' do
-    JSON.parse(subject)["message"].should eq 'event'
+    expect(JSON.parse(subject)["message"]).to eq 'event'
   end
 
 end

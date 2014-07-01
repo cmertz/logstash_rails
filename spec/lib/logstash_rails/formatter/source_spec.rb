@@ -8,12 +8,12 @@ describe LogstashRails::Formatter::Source do
 
   it 'knows its source' do
     result = subject.call({source: 'test'}, {})
-    JSON.parse(result).should include({'source' => 'test'})
+    expect(JSON.parse(result)).to include({'source' => 'test'})
   end
 
   it 'can be disabled' do
     result = subject.call({source: false}, {})
-    JSON.parse(result).keys.should_not include('source')
+    expect(JSON.parse(result).keys).to_not include('source')
   end
 
 end

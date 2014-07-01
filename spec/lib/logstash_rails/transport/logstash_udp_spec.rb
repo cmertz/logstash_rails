@@ -22,7 +22,7 @@ describe LogstashRails::Transport::LogstashUdp do
     thread.join
     socket.close
 
-    received.should eq message
+    expect(received).to eq message
   end
 
 end

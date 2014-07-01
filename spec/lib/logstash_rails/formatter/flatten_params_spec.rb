@@ -11,7 +11,7 @@ describe LogstashRails::Formatter::FlattenParams do
 
     result = subject.call(payload)
 
-    JSON.parse(result).should include({'params' => {'a__b' => 1, 'c' => 2}})
+    expect(JSON.parse(result)).to include({'params' => {'a__b' => 1, 'c' => 2}})
   end
 
   it 'does not flatten params' do
@@ -20,7 +20,7 @@ describe LogstashRails::Formatter::FlattenParams do
 
     result = formatter.perform('event', Time.now, Time.now, 1, payload)
 
-    JSON.parse(result).should include({'params' => {'a' => {'b' => 1}, 'c' => 2}})
+    expect(JSON.parse(result)).to include({'params' => {'a' => {'b' => 1}, 'c' => 2}})
   end
 
 end

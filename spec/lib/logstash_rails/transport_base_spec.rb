@@ -11,7 +11,7 @@ describe LogstashRails::TransportBase do
   it 'handles all events by default' do
     config = subject.config(transport: :redis)
 
-    config.should_receive(:push)
+    expect(config).to receive(:push)
 
     ActiveSupport::Notifications.instrument('foobar_event')
 
@@ -21,9 +21,9 @@ describe LogstashRails::TransportBase do
   it 'logs exceptions if a logger is given' do
     logger = double(:logger)
     config = subject.config(transport: :redis, logger: logger)
-    config.stub(:push).and_raise(ArgumentError.new)
+    allow(config).to receive(:push).and_raise(ArgumentError.new)
 
-    logger.should_receive(:error)
+    expect(logger).to receive(:error)
 
     ActiveSupport::Notifications.instrument('foobar_event')
 

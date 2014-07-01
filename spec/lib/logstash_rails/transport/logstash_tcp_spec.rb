@@ -21,14 +21,14 @@ describe LogstashRails::Transport::LogstashTcp do
   end
 
   it do
-    logstash_tcp.should respond_to :push
+    expect(logstash_tcp).to respond_to :push
   end
 
   it 'uses Celluliod::IO if present' do
     celluloid = double(:celluloid, new: double(:socket, close: nil, write: nil))
     stub_const('Celluloid::IO::TCPSocket', celluloid)
 
-    celluloid.should_receive(:new)
+    expect(celluloid).to receive(:new)
 
     logstash_tcp.push 'toto'
 
@@ -47,7 +47,7 @@ describe LogstashRails::Transport::LogstashTcp do
     logstash_tcp.push 'toto'
     logstash_tcp.destroy
     @thread.join
-    @received.should eq 'toto'
+    expect(@received).to eq 'toto'
   end
 
   it 'lazily connects the socket' do
