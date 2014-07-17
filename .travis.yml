@@ -6,6 +6,7 @@ rvm:
   - rbx-2.1.1
   - jruby-19mode
   - jruby-head
+before_script: gem install bundler
 script: rake test
 matrix:
   allow_failures:
