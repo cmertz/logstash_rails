@@ -10,7 +10,7 @@ end
 
 desc 'cleanup working copy'
 task :clean do
-  FileUtils.rm_rf %w(coverage doc pkg)
+  FileUtils.rm_rf %w(Gemfile.lock coverage doc pkg)
 end
 
 task :default do
