@@ -4,7 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/cmertz/logstash_rails/badge.png)](https://coveralls.io/r/cmertz/logstash_rails)
 [![Code Climate](https://codeclimate.com/github/cmertz/logstash_rails.png)](https://codeclimate.com/github/cmertz/logstash_rails)
 [![Dependency Status](https://gemnasium.com/cmertz/logstash_rails.png)](https://gemnasium.com/cmertz/logstash_rails)
-[![Bitdeli](https://d2weczhvl823v0.cloudfront.net/cmertz/logstash_rails/trend.png)](https://bitdeli.com/free "Bitdeli")
 
 Send events from Rails to Logstash without logger foo.
 
