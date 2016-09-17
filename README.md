@@ -1,3 +1,9 @@
+# **DEPRECATED**
+
+Please use some other gem like [LogstashLogger](https://github.com/dwbutler/logstash-logger).
+
+
+
 # LogstashRails
 [![Gem Version](https://badge.fury.io/rb/logstash_rails.png)](http://badge.fury.io/rb/logstash_rails)
 [![Build Status](https://secure.travis-ci.org/cmertz/logstash_rails.png)](http://travis-ci.org/cmertz/logstash_rails)
